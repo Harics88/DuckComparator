@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oracle-table-compare"
+version = "0.1.0"
+description = "Airflow-orchestrated Oracle table comparison using DuckDB"
+requires-python = ">=3.10"
+dependencies = ["duckdb>=1.1", "oracledb>=2.4", "PyYAML>=6.0", "pandas>=2.2", "XlsxWriter>=3.2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.8"]
+airflow = ["apache-airflow>=3,<4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+exclude = ["build"]
+
+[tool.ruff.lint]
+ignore = ["EXE002"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

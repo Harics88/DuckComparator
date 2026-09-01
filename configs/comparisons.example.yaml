@@ -1,0 +1,19 @@
+comparisons:
+  customer_master:
+    description: Customer master reconciliation
+    left:
+      connection: oracle_prod
+      schema: CRM
+      table: CUSTOMER
+    right:
+      connection: oracle_uat
+      schema: CRM
+      table: CUSTOMER
+    primary_key: [CUSTOMER_ID]
+    exclude_columns: [LAST_UPDATED_AT]
+    rules:
+      trim_strings: true
+      case_sensitive: false
+      numeric_tolerance: 0.0001
+    report:
+      detail_row_limit: 500000
